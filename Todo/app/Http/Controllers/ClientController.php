@@ -34,7 +34,7 @@ class ClientController extends Controller
             {
                 session()->put('user_id' , 1);
                 echo "logged in";
-                // return redirect ('/');
+                return redirect ('/api/read');
             }
         }
 

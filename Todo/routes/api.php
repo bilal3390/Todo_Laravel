@@ -26,19 +26,19 @@ Route::get('/', function () {
     return "Welcome to main page";
 });
 
-Route::get('/read',[TaskController::class,'read']);
-Route::post('/create',[TaskController::class,'create']);
-Route::post('/update/{tasks}',[TaskController::class,'update']);
-Route::post('/delete/{tasks}',[TaskController::class,'delete']);
-Route::post('/deleteall',[TaskController::class,'deleteall']);
+// Route::get('/read',[TaskController::class,'read']);
+// Route::post('/create',[TaskController::class,'create']);
+// Route::post('/update/{tasks}',[TaskController::class,'update']);
+// Route::post('/delete/{tasks}',[TaskController::class,'delete']);
+// Route::post('/deleteall',[TaskController::class,'deleteall']);
 
 
-// Route::middleware(['guard'])->group(function () {
-//     Route::get('/read',[TaskController::class,'read']);
-//     Route::post('/create',[TaskController::class,'create']);
-//     Route::post('/update/{tasks}',[TaskController::class,'update']);
-//     Route::post('/delete/{tasks}',[TaskController::class,'delete']);
-// });
+Route::middleware(['guard'])->group(function () {
+    Route::get('/read',[TaskController::class,'read']);
+    Route::post('/create',[TaskController::class,'create']);
+    Route::post('/update/{tasks}',[TaskController::class,'update']);
+    Route::post('/delete/{tasks}',[TaskController::class,'delete']);
+});
 
 
 Route::post('/signup',[ClientController::class,'signup']);

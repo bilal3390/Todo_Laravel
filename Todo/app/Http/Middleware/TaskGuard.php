@@ -16,11 +16,10 @@ class TaskGuard
      */
     public function handle(Request $request, Closure $next)
     {
-        if (!session()->has('user_id')) {
-            return "Log in first"; // Redirect if 'user_id' doesn't exist in the session
-        }
-        else {
-            return $next($request);
+        if (session()->has('user_id')) {
+            return $next($request); // Allow access to the route
+        } else {
+            return response("You are not allowed to see data", 403); // Return a proper response
         }
     }
 }
