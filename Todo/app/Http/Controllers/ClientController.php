@@ -32,8 +32,8 @@ class ClientController extends Controller
             $userPassword = Hash::check ($password, $user->password);
             if($userPassword)
             {
-                session()->put('user_id' , 1);
                 echo "logged in";
+                session()->put('user_id',1);
                 return redirect ('/api/read');
             }
         }

@@ -16,10 +16,10 @@ class TaskGuard
      */
     public function handle(Request $request, Closure $next)
     {
-        if (session()->has('user_id')) {
-            return $next($request); // Allow access to the route
-        } else {
+        if (!(session()->has('user_id'))) {
             return response("You are not allowed to see data", 403); // Return a proper response
+        } else {
+            return $next($request); // Allow access to the route
         }
     }
 }
